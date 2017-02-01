@@ -1,5 +1,6 @@
 package edu.oregonstate.cs361.battleship;
 
+import com.google.gson.Gson;
 import spark.Request;
 import static spark.Spark.get;
 import static spark.Spark.post;
@@ -21,7 +22,11 @@ public class Main {
 
     //This function should return a new model
     static String newModel() {
-        return "MODEL";
+        BattleshipModel model = new BattleshipModel();
+
+        Gson gson = new Gson();
+        String json = gson.toJson(model);
+        return json;
     }
 
     //This function should accept an HTTP request and deseralize it into an actual Java object.
